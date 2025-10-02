@@ -1,8 +1,6 @@
 import React, { useState } from "react";
-import MobileNav from "../components/MobileNav";
 import useAppContext from "../context/useAppContext";
 import { useQuery } from "@tanstack/react-query";
-
 import { fetchUsers } from "../services/fetchUsers";
 import MobileTableView from "../components/MobileTableView";
 import AddNewUser from "../components/AddNewUser";
@@ -44,7 +42,7 @@ const UserManagement = () => {
   return (
     <div className="">
       <div className=" flex flex-col  bg-[#F0F7FF]">
-        <MobileNav />
+        
         <div className="pt-[48px] hidden md:flex pb-[24px] px-[32px] flex items-center justify-between bg-white shadow-lg">
           <h2 className="text-[24px] font-semibold font-600 text-gray-700">
             User Management

@@ -5,6 +5,7 @@ import MobileNav from "./MobileNav";
 
 const AddNewUser = () => {
   const { addNewUser, setAddNewUser } = useAppContext();
+  const [error, setError] = useState(null);
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -16,18 +17,28 @@ const AddNewUser = () => {
   });
   if (!addNewUser) return null;
 
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
+
+   
   };
 
+  
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(formData);
   };
+
+
   return (
     <div className="fixed inset-0 w-full h-full bg-[#575D7299] z-50">
       <MobileNav />
+      <div className="px-8 flex items-center gap-[2px] py-[14px] bg-[#FAF7FC] ">
+        <p className="leading-[20px] text-[#89939E] ">User Management/</p>
+        <p className="leading-[20px] text[#8F50A9] ">Add New User</p>
+      </div>
       {addNewUser && (
         <div className="flex justify-end ">
           

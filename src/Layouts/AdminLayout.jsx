@@ -1,5 +1,6 @@
 import React from "react";
 import AdminTabs from "../components/AdminTabs";
+import MobileNav from "../components/MobileNav";
 
 import { Outlet } from "react-router-dom";
 
@@ -12,7 +13,11 @@ const AdminLayout = () => {
       {/* Admin sections */}
       <div className="md:flex items-center ">
         {/* Admin Tabs */}
+        
         <AdminTabs />
+        {/* Mobile nav */}
+        <MobileNav />
+
         <div className="md:w-9/11 w-full  h-screen bg-[#F5F5F5]"><Outlet /></div>
       </div>
       
