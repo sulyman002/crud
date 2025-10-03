@@ -16,6 +16,10 @@ const MobileTableView = () => {
     setRowsPerPage,
     clickRow,
     setClickRow,
+    editUser,
+    setEditUser,
+    setEditingRow
+
   } = useAppContext();
 
    const handleClickRow = () => {
@@ -65,7 +69,10 @@ const MobileTableView = () => {
 
                   {/* edit and delete */}
                   <div className="flex items-center gap-[17px] text-[14px] underline cursor-pointer text-gray-600">
-                    <p className="">Edit</p>
+                    <p onClick={() => {
+                       setEditUser(!editUser);
+                       setEditingRow(user)
+                    }} className="">Edit</p>
                     <p className="">Delete</p>
                   </div>
                 </div>
@@ -131,7 +138,7 @@ const MobileTableView = () => {
           </div>
           {/* Pagination */}
           {clickRow && (
-            <div className=" absolute bottom-14 md:right-0 bg-white shadow gap-3 z-99 rounded-[8px] py-[12px] px-4 bg-blue-100 md:w-[164px] w-full rounded-[8px] flex flex-col ">
+            <div className=" absolute bottom-14 md:right-0 bg-white shadow gap-3 z-99 rounded-[8px] py-[12px] px-4 md:w-[164px] w-full  flex flex-col ">
               <div
                 onClick={() => {
                   setRowsPerPage(10);

@@ -1,10 +1,12 @@
 import { useState } from "react";
 import useAppContext from "../context/useAppContext";
-import { useQuery } from "@tanstack/react-query";
+import { useQuery, useQueryClient, useMutation } from "@tanstack/react-query";
 import { fetchUsers } from "../services/fetchUsers";
 import MobileTableView from "../components/MobileTableView";
 import AddNewUser from "../components/AddNewUser";
 import noUser from "../assets/noUser.png";
+import EditUser from "../components/EditUser";
+import { deleteUser } from "../services/deleteUser";
 
 const UserManagement = () => {
   const {
@@ -18,6 +20,9 @@ const UserManagement = () => {
     setClickRow,
     addNewUser,
     setAddNewUser,
+    editUser,
+    setEditUser,
+    setEditingRow,
   } = useAppContext();
   const [openFilter, setOpenFilter] = useState(false);
   const [newUser, setNewUser] = useState(false);
@@ -35,10 +40,21 @@ const UserManagement = () => {
     queryFn: fetchUsers,
   });
 
+  const client = useQueryClient();
+
+  const mutation = useMutation({
+    queryFn: deleteUser,
+    onSuccess: () => {
+      client.invalidateQueries(["users"]);
+    },
+  });
+
+  // const handleDelete = () => {
+  //   mutation.mutate()
+  // }
+
   if (isLoading) return <div>Loading...</div>;
   if (error) return <div>Error loading users</div>;
-
-  console.log(data);
 
   return (
     <div
@@ -49,18 +65,20 @@ const UserManagement = () => {
       {data.length === 0 ? (
         <div className="w-full h-screen flex items-center justify-center bg-white">
           <div className="rounded-[8px] flex gap-[34px] flex-col p-[24px] bg-white w-full md:w-[408px] items-center shadow-md ">
-          <img src={noUser} alt="No-use" className="w-[188px] h-[140px] " />
-          <div className="flex flex-col gap-[14px] items-center ">
-            <p className="font-500 font-medium text-[18px] font-gray-950 ">
-              Start Adding Users
-            </p>
-            <p className="text-[14px] text-gray-500 text-center ">
-              No users have been added yet. Click the 'Add User' button below to
-              create a new user.
-            </p>
+            <img src={noUser} alt="No-use" className="w-[188px] h-[140px] " />
+            <div className="flex flex-col gap-[14px] items-center ">
+              <p className="font-500 font-medium text-[18px] font-gray-950 ">
+                Start Adding Users
+              </p>
+              <p className="text-[14px] text-gray-500 text-center ">
+                No users have been added yet. Click the 'Add User' button below
+                to create a new user.
+              </p>
+            </div>
+            <button className="rounded-[8px] font-500 text-[16px] text-white bg-[#1F66B7] w-full py-[10px] ">
+              Add user
+            </button>
           </div>
-          <button className="rounded-[8px] font-500 text-[16px] text-white bg-[#1F66B7] w-full py-[10px] ">Add user</button>
-        </div>
         </div>
       ) : (
         <div className="">
@@ -128,7 +146,7 @@ const UserManagement = () => {
                     </div>
                     {/* new user drop down */}
                     {newUser && (
-                      <div className=" md:absolute md:top-13 md:right-0 bg-white shadow gap-3 z-99 rounded-[8px] py-[12px] px-4 bg-blue-100 md:w-[164px] w-full rounded-[8px] flex flex-col ">
+                      <div className=" md:absolute md:top-13 md:right-0 shadow gap-3 z-99 rounded-[8px] py-[12px] px-4 bg-white md:w-[164px] w-full  flex flex-col ">
                         <div
                           onClick={() => {
                             setAddNewUser(!addNewUser);
@@ -425,30 +443,48 @@ const UserManagement = () => {
                         </td>
                         <td className="w-[50px] px-4 py-3 text-left">
                           <div className="flex items-center gap-[16px] py-[11px]">
-                            <svg
-                              width="16px"
-                              height="16px"
-                              viewBox="0 0 15 16"
-                              fill="none"
-                              xmlns="http://www.w3.org/2000/svg"
+                            {/* edit */}
+                            <div
+                              onClick={() => {
+                                setEditUser(!editUser);
+                                setEditingRow(user);
+                              }}
+                              className=""
                             >
-                              <path
-                                d="M2.95872 12.284C2.99443 12.284 3.03015 12.2805 3.06586 12.2751L6.06943 11.7483C6.10515 11.7412 6.13908 11.7251 6.16408 11.6983L13.7337 4.12868C13.7503 4.11216 13.7634 4.09254 13.7724 4.07094C13.7813 4.04934 13.7859 4.02618 13.7859 4.00279C13.7859 3.9794 13.7813 3.95625 13.7724 3.93464C13.7634 3.91304 13.7503 3.89342 13.7337 3.8769L10.7659 0.907254C10.7319 0.873326 10.6873 0.855469 10.6391 0.855469C10.5909 0.855469 10.5462 0.873326 10.5123 0.907254L2.94265 8.4769C2.91586 8.50368 2.89979 8.53583 2.89265 8.57154L2.36586 11.5751C2.34849 11.6708 2.3547 11.7692 2.38395 11.862C2.41319 11.9547 2.4646 12.0389 2.53372 12.1073C2.65158 12.2215 2.79979 12.284 2.95872 12.284ZM4.16229 9.16975L10.6391 2.69475L11.948 4.00368L5.47122 10.4787L3.88372 10.759L4.16229 9.16975ZM14.0712 13.784H0.928362C0.612291 13.784 0.356934 14.0394 0.356934 14.3555V14.9983C0.356934 15.0769 0.421219 15.1412 0.499791 15.1412H14.4998C14.5784 15.1412 14.6426 15.0769 14.6426 14.9983V14.3555C14.6426 14.0394 14.3873 13.784 14.0712 13.784Z"
-                                fill="#6C748B"
-                              />
-                            </svg>
-                            <svg
-                              width="15px"
-                              height="16px"
-                              viewBox="0 0 15 16"
-                              fill="none"
-                              xmlns="http://www.w3.org/2000/svg"
+                              <svg
+                                width="16px"
+                                height="16px"
+                                viewBox="0 0 15 16"
+                                fill="none"
+                                xmlns="http://www.w3.org/2000/svg"
+                              >
+                                <path
+                                  d="M2.95872 12.284C2.99443 12.284 3.03015 12.2805 3.06586 12.2751L6.06943 11.7483C6.10515 11.7412 6.13908 11.7251 6.16408 11.6983L13.7337 4.12868C13.7503 4.11216 13.7634 4.09254 13.7724 4.07094C13.7813 4.04934 13.7859 4.02618 13.7859 4.00279C13.7859 3.9794 13.7813 3.95625 13.7724 3.93464C13.7634 3.91304 13.7503 3.89342 13.7337 3.8769L10.7659 0.907254C10.7319 0.873326 10.6873 0.855469 10.6391 0.855469C10.5909 0.855469 10.5462 0.873326 10.5123 0.907254L2.94265 8.4769C2.91586 8.50368 2.89979 8.53583 2.89265 8.57154L2.36586 11.5751C2.34849 11.6708 2.3547 11.7692 2.38395 11.862C2.41319 11.9547 2.4646 12.0389 2.53372 12.1073C2.65158 12.2215 2.79979 12.284 2.95872 12.284ZM4.16229 9.16975L10.6391 2.69475L11.948 4.00368L5.47122 10.4787L3.88372 10.759L4.16229 9.16975ZM14.0712 13.784H0.928362C0.612291 13.784 0.356934 14.0394 0.356934 14.3555V14.9983C0.356934 15.0769 0.421219 15.1412 0.499791 15.1412H14.4998C14.5784 15.1412 14.6426 15.0769 14.6426 14.9983V14.3555C14.6426 14.0394 14.3873 13.784 14.0712 13.784Z"
+                                  fill="#6C748B"
+                                />
+                              </svg>
+                            </div>
+                            {/* delete */}
+                            <div
+                              onClick={() => {
+                                mutation.mutate(user.id);
+                              }}
+                              className="cursor-pointer"
                             >
-                              <path
-                                d="M4.78544 2.14118H4.64258C4.72115 2.14118 4.78544 2.0769 4.78544 1.99833V2.14118H10.214V1.99833C10.214 2.0769 10.2783 2.14118 10.3569 2.14118H10.214V3.4269H11.4997V1.99833C11.4997 1.36797 10.9872 0.855469 10.3569 0.855469H4.64258C4.01222 0.855469 3.49972 1.36797 3.49972 1.99833V3.4269H4.78544V2.14118ZM13.7854 3.4269H1.21401C0.897935 3.4269 0.642578 3.68225 0.642578 3.99833V4.56975C0.642578 4.64833 0.706864 4.71261 0.785435 4.71261H1.86401L2.30508 14.0519C2.33365 14.6608 2.83722 15.1412 3.44615 15.1412H11.5533C12.164 15.1412 12.6658 14.6626 12.6944 14.0519L13.1354 4.71261H14.214C14.2926 4.71261 14.3569 4.64833 14.3569 4.56975V3.99833C14.3569 3.68225 14.1015 3.4269 13.7854 3.4269ZM11.4158 13.8555H3.58365L3.15151 4.71261H11.8479L11.4158 13.8555Z"
-                                fill="#6C748B"
-                              />
-                            </svg>
+                              {" "}
+                              <svg
+                                width="15px"
+                                height="16px"
+                                viewBox="0 0 15 16"
+                                fill="none"
+                                xmlns="http://www.w3.org/2000/svg"
+                              >
+                                <path
+                                  d="M4.78544 2.14118H4.64258C4.72115 2.14118 4.78544 2.0769 4.78544 1.99833V2.14118H10.214V1.99833C10.214 2.0769 10.2783 2.14118 10.3569 2.14118H10.214V3.4269H11.4997V1.99833C11.4997 1.36797 10.9872 0.855469 10.3569 0.855469H4.64258C4.01222 0.855469 3.49972 1.36797 3.49972 1.99833V3.4269H4.78544V2.14118ZM13.7854 3.4269H1.21401C0.897935 3.4269 0.642578 3.68225 0.642578 3.99833V4.56975C0.642578 4.64833 0.706864 4.71261 0.785435 4.71261H1.86401L2.30508 14.0519C2.33365 14.6608 2.83722 15.1412 3.44615 15.1412H11.5533C12.164 15.1412 12.6658 14.6626 12.6944 14.0519L13.1354 4.71261H14.214C14.2926 4.71261 14.3569 4.64833 14.3569 4.56975V3.99833C14.3569 3.68225 14.1015 3.4269 13.7854 3.4269ZM11.4158 13.8555H3.58365L3.15151 4.71261H11.8479L11.4158 13.8555Z"
+                                  fill="#6C748B"
+                                />
+                              </svg>
+                            </div>
                           </div>
                         </td>
                       </tr>
@@ -483,7 +519,7 @@ const UserManagement = () => {
                           </div>
                           {/* Pagination */}
                           {clickRow && (
-                            <div className=" md:absolute bottom-14 md:right-0 bg-white shadow gap-3 z-99 rounded-[8px] py-[12px] px-4 bg-blue-100 md:w-[164px] w-full rounded-[8px] flex flex-col ">
+                            <div className=" md:absolute bottom-14 md:right-0  shadow gap-3 z-99 py-[12px] px-4 bg-blue-100 md:w-[164px] w-full rounded-[8px] flex flex-col ">
                               <div
                                 onClick={() => {
                                   setRowsPerPage(10);
@@ -580,7 +616,8 @@ const UserManagement = () => {
 
             {/* Mobile view */}
             <MobileTableView />
-            <AddNewUser />
+            {addNewUser && <AddNewUser />}
+            {editUser && <EditUser />}
           </div>
         </div>
       )}

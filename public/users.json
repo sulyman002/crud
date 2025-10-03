@@ -2,7 +2,10 @@
   {
     "id": 1,
     "name": "Sarah Martinez",
+    "username": "sarah",
+    "lastname": "Martinez",
     "email": "sarah.martinez@email.com",
+    "phonenumber": "+234-810-000-0001",
     "department": "Dentistry",
     "account_created": "2024-05-15",
     "status": "Active"
@@ -10,7 +13,10 @@
   {
     "id": 2,
     "name": "James Carter",
+    "username": "james",
+    "lastname": "Carter",
     "email": "james.carter@email.com",
+    "phonenumber": "+234-810-000-0002",
     "department": "Engineering",
     "account_created": "2024-06-02",
     "status": "Pending"
@@ -18,7 +24,10 @@
   {
     "id": 3,
     "name": "Emily Johnson",
+    "username": "emily",
+    "lastname": "Johnson",
     "email": "emily.johnson@email.com",
+    "phonenumber": "+234-810-000-0003",
     "department": "Pharmacy",
     "account_created": "2024-04-21",
     "status": "Active"
@@ -26,7 +35,10 @@
   {
     "id": 4,
     "name": "Michael Brown",
+    "username": "michael",
+    "lastname": "Brown",
     "email": "michael.brown@email.com",
+    "phonenumber": "+234-810-000-0004",
     "department": "Dentistry",
     "account_created": "2024-07-11",
     "status": "Active"
@@ -34,7 +46,10 @@
   {
     "id": 5,
     "name": "Olivia Davis",
+    "username": "olivia",
+    "lastname": "Davis",
     "email": "olivia.davis@email.com",
+    "phonenumber": "+234-810-000-0005",
     "department": "Nursing",
     "account_created": "2024-05-28",
     "status": "Pending"
@@ -42,7 +57,10 @@
   {
     "id": 6,
     "name": "Daniel Wilson",
+    "username": "daniel",
+    "lastname": "Wilson",
     "email": "daniel.wilson@email.com",
+    "phonenumber": "+234-810-000-0006",
     "department": "Dentistry",
     "account_created": "2024-08-10",
     "status": "Active"
@@ -50,7 +68,10 @@
   {
     "id": 7,
     "name": "Sophia Taylor",
+    "username": "sophia",
+    "lastname": "Taylor",
     "email": "sophia.taylor@email.com",
+    "phonenumber": "+234-810-000-0007",
     "department": "Engineering",
     "account_created": "2024-03-17",
     "status": "Pending"
@@ -58,7 +79,10 @@
   {
     "id": 8,
     "name": "Liam Anderson",
+    "username": "liam",
+    "lastname": "Anderson",
     "email": "liam.anderson@email.com",
+    "phonenumber": "+234-810-000-0008",
     "department": "Dentistry",
     "account_created": "2024-06-05",
     "status": "Active"
@@ -66,7 +90,10 @@
   {
     "id": 9,
     "name": "Isabella Thomas",
+    "username": "isabella",
+    "lastname": "Thomas",
     "email": "isabella.thomas@email.com",
+    "phonenumber": "+234-810-000-0009",
     "department": "Pharmacy",
     "account_created": "2024-02-23",
     "status": "Active"
@@ -74,7 +101,10 @@
   {
     "id": 10,
     "name": "Ethan White",
+    "username": "ethan",
+    "lastname": "White",
     "email": "ethan.white@email.com",
+    "phonenumber": "+234-810-000-0010",
     "department": "Dentistry",
     "account_created": "2024-07-14",
     "status": "Pending"
@@ -82,7 +112,10 @@
   {
     "id": 11,
     "name": "Mia Harris",
+    "username": "mia",
+    "lastname": "Harris",
     "email": "mia.harris@email.com",
+    "phonenumber": "+234-810-000-0011",
     "department": "Nursing",
     "account_created": "2024-05-09",
     "status": "Active"
@@ -90,7 +123,10 @@
   {
     "id": 12,
     "name": "Noah Martin",
+    "username": "noah",
+    "lastname": "Martin",
     "email": "noah.martin@email.com",
+    "phonenumber": "+234-810-000-0012",
     "department": "Engineering",
     "account_created": "2024-06-20",
     "status": "Pending"
@@ -98,7 +134,10 @@
   {
     "id": 13,
     "name": "Ava Thompson",
+    "username": "ava",
+    "lastname": "Thompson",
     "email": "ava.thompson@email.com",
+    "phonenumber": "+234-810-000-0013",
     "department": "Dentistry",
     "account_created": "2024-08-01",
     "status": "Active"
@@ -106,7 +145,10 @@
   {
     "id": 14,
     "name": "William Garcia",
+    "username": "william",
+    "lastname": "Garcia",
     "email": "william.garcia@email.com",
+    "phonenumber": "+234-810-000-0014",
     "department": "Pharmacy",
     "account_created": "2024-03-29",
     "status": "Active"
@@ -114,7 +156,10 @@
   {
     "id": 15,
     "name": "Charlotte Martinez",
+    "username": "charlotte",
+    "lastname": "Martinez",
     "email": "charlotte.martinez@email.com",
+    "phonenumber": "+234-810-000-0015",
     "department": "Dentistry",
     "account_created": "2024-07-07",
     "status": "Pending"
@@ -122,7 +167,10 @@
   {
     "id": 16,
     "name": "Benjamin Robinson",
+    "username": "benjamin",
+    "lastname": "Robinson",
     "email": "benjamin.robinson@email.com",
+    "phonenumber": "+234-810-000-0016",
     "department": "Nursing",
     "account_created": "2024-05-18",
     "status": "Active"
@@ -130,7 +178,10 @@
   {
     "id": 17,
     "name": "Amelia Clark",
+    "username": "amelia",
+    "lastname": "Clark",
     "email": "amelia.clark@email.com",
+    "phonenumber": "+234-810-000-0017",
     "department": "Engineering",
     "account_created": "2024-06-25",
     "status": "Pending"
@@ -138,7 +189,10 @@
   {
     "id": 18,
     "name": "Lucas Rodriguez",
+    "username": "lucas",
+    "lastname": "Rodriguez",
     "email": "lucas.rodriguez@email.com",
+    "phonenumber": "+234-810-000-0018",
     "department": "Dentistry",
     "account_created": "2024-04-16",
     "status": "Active"
@@ -146,7 +200,10 @@
   {
     "id": 19,
     "name": "Harper Lewis",
+    "username": "harper",
+    "lastname": "Lewis",
     "email": "harper.lewis@email.com",
+    "phonenumber": "+234-810-000-0019",
     "department": "Pharmacy",
     "account_created": "2024-02-12",
     "status": "Active"
@@ -154,7 +211,10 @@
   {
     "id": 20,
     "name": "Elijah Walker",
+    "username": "elijah",
+    "lastname": "Walker",
     "email": "elijah.walker@email.com",
+    "phonenumber": "+234-810-000-0020",
     "department": "Dentistry",
     "account_created": "2024-07-19",
     "status": "Pending"
@@ -162,7 +222,10 @@
   {
     "id": 21,
     "name": "Evelyn Hall",
+    "username": "evelyn",
+    "lastname": "Hall",
     "email": "evelyn.hall@email.com",
+    "phonenumber": "+234-810-000-0021",
     "department": "Nursing",
     "account_created": "2024-06-01",
     "status": "Active"
@@ -170,7 +233,10 @@
   {
     "id": 22,
     "name": "Henry Allen",
+    "username": "henry",
+    "lastname": "Allen",
     "email": "henry.allen@email.com",
+    "phonenumber": "+234-810-000-0022",
     "department": "Engineering",
     "account_created": "2024-05-25",
     "status": "Pending"
@@ -178,7 +244,10 @@
   {
     "id": 23,
     "name": "Abigail Young",
+    "username": "abigail",
+    "lastname": "Young",
     "email": "abigail.young@email.com",
+    "phonenumber": "+234-810-000-0023",
     "department": "Dentistry",
     "account_created": "2024-08-08",
     "status": "Active"
@@ -186,7 +255,10 @@
   {
     "id": 24,
     "name": "Alexander Hernandez",
+    "username": "alexander",
+    "lastname": "Hernandez",
     "email": "alexander.hernandez@email.com",
+    "phonenumber": "+234-810-000-0024",
     "department": "Pharmacy",
     "account_created": "2024-03-05",
     "status": "Active"
@@ -194,7 +266,10 @@
   {
     "id": 25,
     "name": "Sofia King",
+    "username": "sofia",
+    "lastname": "King",
     "email": "sofia.king@email.com",
+    "phonenumber": "+234-810-000-0025",
     "department": "Dentistry",
     "account_created": "2024-07-30",
     "status": "Pending"
