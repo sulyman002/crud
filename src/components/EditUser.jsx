@@ -77,7 +77,7 @@ setEditUser(false)};
         <p className="leading-[20px] text-[#8F50A9] ">Add New User</p>
       </div>
       {editUser && (
-        <div className="flex justify-end ">
+        <div className="flex justify-end overflow-y-auto ">
           <div className="w-full lg:w-1/4 md:2/3 h-screen bg-white flex flex-col gap-[30px] md:pt-20 pt-10">
             <div className="px-8 flex flex-col gap-[45px] ">
               <div className="flex items-center justify-between">
