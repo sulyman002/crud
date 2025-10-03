@@ -12,7 +12,7 @@ const AdminTabs = () => {
       <div className="flex items-start flex-col justify-between w-full h-full">
         <div className="flex items-start gap-8 flex-col w-full">
           {/* site icon */}
-          <div className="">
+          <div onClick={() => navigate("/user-management")} className="">
             <img src={crudLogo} alt="crudLogo" />
           </div>
           {/* admin menu */}
@@ -49,7 +49,7 @@ const AdminTabs = () => {
               onClick={(event) => {
                 setChangeAdmin(event.target.name);
                 console.log(event.target);
-                navigate("user-management");
+                navigate("/");
               }}
               className={`flex items-center gap-3 cursor-pointer justify-start pl-6 py-4 rounded-[8px]  text-[16px]  ${
                 changeAdmin === "allUsers"

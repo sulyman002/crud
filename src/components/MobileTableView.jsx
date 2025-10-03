@@ -119,7 +119,7 @@ const MobileTableView = () => {
           );
         })}
       {/* Pagination for mobile */}
-      <div className="flex items-center justify-end py-[20px] border-y bg-[#F4F2FF] border-gray-200 gap-6 w-full pr-6">
+      <div className="flex items-center flex-col py-[20px] border-y bg-[#F4F2FF] border-gray-200 gap-6 w-full pr-6">
         <div className="relative">
           <div onClick={handleClickRow} className=" flex items-center gap-2 ">
             Rows per page: {rowsPerPage}

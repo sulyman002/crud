@@ -82,15 +82,15 @@ const MobileNav = () => {
                     Dashboard
                   </button>
                   <button
-                    name="allUsers"
+                    name="userManagement"
                     onClick={(event) => {
                       setAdminTitle("User Management");
                       setChangeAdmin(event.target.name);
                       console.log(event.target);
-                      navigate("user-management");
+                      navigate("/");
                     }}
                     className={`flex items-center gap-3 cursor-pointer justify-start pl-6 py-4 rounded-[8px]  text-[16px]  ${
-                      changeAdmin === "allUsers"
+                      changeAdmin === "userManagement"
                         ? "bg-[#1F66B7]  text-white "
                         : "text-[#F5EEF9] "
                     }`}
@@ -113,7 +113,7 @@ const MobileNav = () => {
                     User Management
                   </button>
                   <button
-                    name="create-trip"
+                    name="survey"
                     onClick={(event) => {
                       setAdminTitle("Survey");
                       setChangeAdmin(event.target.name);
@@ -121,7 +121,7 @@ const MobileNav = () => {
                       navigate("survey");
                     }}
                     className={`flex items-center gap-3 cursor-pointer justify-start pl-6 py-4 rounded-[8px]  text-[16px]  ${
-                      changeAdmin === "create-trip"
+                      changeAdmin === "survey"
                         ? "bg-[#1F66B7]  text-white font-medium font-500"
                         : "text-[#F5EEF9] "
                     }`}

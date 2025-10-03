@@ -10,7 +10,7 @@ function App() {
       <Routes>
         <Route path="/" element={<AdminLayout />}>
           <Route path="dashboard" element={<Dashboard />} />
-          <Route path="user-management" element={<UserManagement />} />
+          <Route index element={<UserManagement />} />
           <Route path="survey" element={<Survey />} />
         </Route>
       </Routes>

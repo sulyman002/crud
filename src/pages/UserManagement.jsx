@@ -7,7 +7,7 @@ import AddNewUser from "../components/AddNewUser";
 import noUser from "../assets/noUser.png";
 import EditUser from "../components/EditUser";
 import { deleteUser } from "../services/deleteUser";
-import filterIcon from "../assets/filterIcon.svg"
+import filterIcon from "../assets/filterIcon.svg";
 
 const UserManagement = () => {
   const {
@@ -50,9 +50,7 @@ const UserManagement = () => {
     },
   });
 
-  // const handleDelete = () => {
-  //   mutation.mutate()
-  // }
+
 
   if (isLoading) return <div>Loading...</div>;
   if (error) return <div>Error loading users</div>;
@@ -217,7 +215,10 @@ const UserManagement = () => {
                     <img src={filterIcon} alt="" />
 
                     {openFilter && (
-                      <div onClick={(e) => e.stopPropagation()} className="absolute top-15 right-0 bg-white rounded-[8px] shadow z-99 w-[233px] py-[20px] px-[14px] ">
+                      <div
+                        onClick={(e) => e.stopPropagation()}
+                        className="absolute top-15 right-0 bg-white rounded-[8px] shadow z-99 w-[233px] py-[20px] px-[14px] "
+                      >
                         {/* sort by */}
                         <div className="flex items-start flex-col gap-[8px] ">
                           <p className="text-[#6E6893] text-[14px] uppercase tracking-[5%] ">
@@ -478,7 +479,7 @@ const UserManagement = () => {
                     ))}
                 </tbody>
                 {/* table footer */}
-                <tfoot className="sticky bottom-0 bg-[#DCEDFF] shadow-md z-10 ">
+                <tfoot className="sticky bottom-0 bg-[#DCEDFF] shadow-md z-10  ">
                   <tr>
                     <td
                       colSpan="6"
