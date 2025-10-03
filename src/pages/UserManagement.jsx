@@ -7,6 +7,7 @@ import AddNewUser from "../components/AddNewUser";
 import noUser from "../assets/noUser.png";
 import EditUser from "../components/EditUser";
 import { deleteUser } from "../services/deleteUser";
+import filterIcon from "../assets/filterIcon.svg"
 
 const UserManagement = () => {
   const {
@@ -109,12 +110,12 @@ const UserManagement = () => {
             <div className="flex  pl-[34px] pr-[40px] py-[24px] flex-col gap-[24px]">
               {/* Manage User */}
               <div className="w-full">
-                <div className="flex md:items-center justify-between flex-col md:flex-row gap-[8px]  font-[Source Code Pro] ">
-                  <div className="flex items-start flex-col">
-                    <p className="text-gray-700 font-600 font-semibold text-[20px] ">
+                <div className="flex md:items-center justify-between flex-col md:flex-row gap-[18px]  font-[Source Code Pro] ">
+                  <div className="flex items-start flex-col gap-[4px]">
+                    <p className="text-gray-700 font-600 font-semibold font-[Source Sans Pro] md:text-[20px] text-[16px]  ">
                       Manage User
                     </p>
-                    <p className="text-[14px] ">
+                    <p className="text-[12px] text-gray-500 md:text-[14px] font-[Open Sans] pr-5  ">
                       Administer and oversee user accounts and privileges within
                       the platform.
                     </p>
@@ -211,26 +212,12 @@ const UserManagement = () => {
                   {/* filter button */}
                   <div
                     onClick={handleOpenFilter}
-                    className="relative flex items-center justify-center py-[12px] w-[48px] border border-gray-200 rounded-[8px] cursor-pointer "
+                    className="relative flex items-center justify-center py-[12px] px-[12px] border border-gray-200 rounded-[8px] cursor-pointer "
                   >
-                    <svg
-                      width="22"
-                      height="20"
-                      viewBox="0 0 22 20"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        d="M21 1H1L9 10.46V17L13 19V10.46L21 1Z"
-                        stroke="#6C748B"
-                        stroke-width="2"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                      />
-                    </svg>
+                    <img src={filterIcon} alt="" />
 
                     {openFilter && (
-                      <div className="absolute top-15 right-0 bg-white rounded-[8px] shadow z-99 w-[233px] py-[20px] px-[14px] ">
+                      <div onClick={(e) => e.stopPropagation()} className="absolute top-15 right-0 bg-white rounded-[8px] shadow z-99 w-[233px] py-[20px] px-[14px] ">
                         {/* sort by */}
                         <div className="flex items-start flex-col gap-[8px] ">
                           <p className="text-[#6E6893] text-[14px] uppercase tracking-[5%] ">
@@ -249,13 +236,13 @@ const UserManagement = () => {
                                 type="radio"
                                 name="sort"
                                 id="all"
-                                className="size-5 border-[10px] border-[#0D1C2E]"
+                                className="size-5 accent-[#0D1C2E] border-[10px] border-[#0D1C2E]"
                               />
                             </div>
                             <div className="w-full flex items-center justify-between h-[48px]">
                               <label
                                 htmlFor="all"
-                                className="text-[#24252D] text-[14px] tracking-[5%] "
+                                className="text-[#24252D]  text-[14px] tracking-[5%] "
                               >
                                 Active
                               </label>
@@ -263,7 +250,7 @@ const UserManagement = () => {
                                 type="radio"
                                 name="sort"
                                 id="active"
-                                className="size-5 border-[10px] border-[#0D1C2E]"
+                                className="size-5 border-[10px] accent-[#0D1C2E] border-[#0D1C2E]"
                               />
                             </div>
                             <div className="w-full flex items-center justify-between h-[48px]">
@@ -277,7 +264,7 @@ const UserManagement = () => {
                                 type="radio"
                                 name="sort"
                                 id="inactive"
-                                className="size-5 border-[10px] border-[#0D1C2E]"
+                                className="size-5 border-[10px] accent-[#0D1C2E] border-[#0D1C2E]"
                               />
                             </div>
                             <div className="w-full flex items-center justify-between h-[48px]">
@@ -291,14 +278,14 @@ const UserManagement = () => {
                                 type="radio"
                                 name="sort"
                                 id="inactive"
-                                className="size-5 border-[10px] border-[#0D1C2E]"
+                                className="size-5 border-[10px] accent-[#0D1C2E] border-[#0D1C2E]"
                               />
                             </div>
                           </div>
                         </div>
 
                         {/* Permission */}
-                        <div className="flex items-start flex-col gap-[8px] ">
+                        <div className="flex items-start flex-col gap-[8px] mt-5 ">
                           <p className="text-[#6E6893] text-[14px] uppercase tracking-[5%] ">
                             Permissions:
                           </p>
@@ -315,7 +302,7 @@ const UserManagement = () => {
                                 type="radio"
                                 name="permissions"
                                 id="all"
-                                className="size-5 border-[10px] border-[#0D1C2E]"
+                                className="size-5 border-[10px] accent-[#0D1C2E] border-[#0D1C2E]"
                               />
                             </div>
                             <div className="w-full flex items-center justify-between h-[48px]">
@@ -329,7 +316,7 @@ const UserManagement = () => {
                                 type="radio"
                                 name="permissions"
                                 id="superAdmin"
-                                className="size-5 border-[10px] border-[#0D1C2E]"
+                                className="size-5 border-[10px] accent-[#0D1C2E] border-[#0D1C2E]"
                               />
                             </div>
                             <div className="w-full flex items-center justify-between h-[48px]">
@@ -343,7 +330,7 @@ const UserManagement = () => {
                                 type="radio"
                                 name="permissions"
                                 id="admin"
-                                className="size-5 border-[10px] border-[#0D1C2E]"
+                                className="size-5 border-[10px] accent-[#0D1C2E] border-[#0D1C2E]"
                               />
                             </div>
                             <div className="w-full flex items-center justify-between h-[48px]">
@@ -357,7 +344,7 @@ const UserManagement = () => {
                                 type="radio"
                                 name="permissions"
                                 id="user"
-                                className="size-5 border-[10px] border-[#0D1C2E]"
+                                className="size-5 border-[10px] accent-[#0D1C2E] border-[#0D1C2E]"
                               />
                             </div>
                           </div>

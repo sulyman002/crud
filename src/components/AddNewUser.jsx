@@ -65,7 +65,7 @@ const AddNewUser = () => {
 
       <div className="px-8 flex md:hidden items-center gap-[2px] py-[14px] bg-[#FAF7FC] ">
         <p className="leading-[20px] text-[#89939E] ">User Management/</p>
-        <p className="leading-[20px] text[#8F50A9] ">Add New User</p>
+        <p className="leading-[20px] text-[#8F50A9] ">Add New User</p>
       </div>
       {successfullyAdded ? (
         <div className="flex justify-end ">
