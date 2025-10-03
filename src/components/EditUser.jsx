@@ -3,10 +3,10 @@ import close from "../assets/close.svg";
 import MobileNav from "./MobileNav";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { updateUser } from "../services/updateUser.js";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const EditUser = () => {
-  const { editUser, setEditUser, setEditingRow, editingRow, error, setError } =
+  const {  setEditUser, setEditingRow, editingRow, error, setError, editUser } =
     useAppContext();
   const [dataSave, setDataSave] = useState("");
 
@@ -57,7 +57,16 @@ setEditUser(false)};
     !editingRow.username ||
     !editingRow.phonenumber;
 
-   
+    useEffect(() => {
+    if (editUser) {
+      document.body.classList.add("overflow-hidden");
+    } else {
+      document.body.classList.remove("overflow-hidden");
+    }
+    return () => {
+      document.body.classList.remove("overflow-hidden");
+    };
+  }, [editUser]);
 
   return (
     <div className="fixed inset-0 w-full h-full bg-[#575D7299] z-50">
