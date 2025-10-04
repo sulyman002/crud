@@ -81,7 +81,7 @@ const AddNewUser = () => {
         </div>
         {successfullyAdded ? (
           <div className="flex justify-end ">
-            <div className="w-full lg:w-1/4 md:2/3 min-min-h-screen px-6 bg-white">
+            <div className="w-full md:w-[433px] min-min-h-screen px-6 bg-white">
               <div className="mt-30 flex flex-col items-center gap-[32px] bg-white rounded-[12px]">
                 <div className="flex items-center gap-[20px] flex-col w-full ">
                   <div className="flex items-center justify-center">

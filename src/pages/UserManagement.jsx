@@ -82,28 +82,7 @@ const UserManagement = () => {
       ) : (
         <div className="">
           <div className=" flex flex-col  bg-[#F0F7FF]">
-            <div className="pt-[48px] hidden md:flex pb-[24px] px-[32px] items-center justify-between bg-white shadow-lg">
-              <h2 className="text-[24px] font-semibold font-600 text-gray-700">
-                User Management
-              </h2>
-              <div className="">
-                <svg
-                  width="20"
-                  height="23"
-                  viewBox="0 0 20 23"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M11.73 20.5C11.5542 20.8031 11.3018 21.0547 10.9982 21.2295C10.6946 21.4044 10.3504 21.4965 10 21.4965C9.64962 21.4965 9.30539 21.4044 9.00177 21.2295C8.69816 21.0547 8.44581 20.8031 8.27 20.5M16 7.5C16 5.9087 15.3679 4.38258 14.2426 3.25736C13.1174 2.13214 11.5913 1.5 10 1.5C8.4087 1.5 6.88258 2.13214 5.75736 3.25736C4.63214 4.38258 4 5.9087 4 7.5C4 14.5 1 16.5 1 16.5H19C19 16.5 16 14.5 16 7.5Z"
-                    stroke="#575D72"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  />
-                </svg>
-              </div>
-            </div>
+            
             {/* Manage User */}
             <div className="flex  pl-[34px] pr-[40px] py-[24px] flex-col gap-[24px]">
               {/* Manage User */}
@@ -212,7 +191,7 @@ const UserManagement = () => {
                     onClick={handleOpenFilter}
                     className="relative flex items-center justify-center py-[12px] px-[12px] border border-gray-200 rounded-[8px] cursor-pointer "
                   >
-                    <img src={filterIcon} alt="" />
+                    <img src={filterIcon} alt="" className="w-[24px] h-[24px] " />
 
                     {openFilter && (
                       <div
@@ -361,12 +340,12 @@ const UserManagement = () => {
           </div>
           {/* user management table here */}
           <div className="w-full h-full bg-white p-8 flex ">
-            <div className="hidden md:flex h-[570px] overflow-y-auto rounded-[16px] w-full">
+            <div className="hidden md:flex overflow-y-auto rounded-[16px] w-full">
               <table className=" bg-[#DCEDFF] w-full ">
                 {/* table head */}
                 <thead className="sticky top-0 bg-[#DCEDFF] rounded-[16px] shadow-md z-10">
                   <tr className="text-[14px] font-600 font-semibold ">
-                    <th className="w-14 px-2 py-3 text-left">
+                    <th className="w-14 px-2 py-3 text-center">
                       <input
                         type="checkbox"
                         name="selectAll"
@@ -398,7 +377,7 @@ const UserManagement = () => {
                     )
                     .map((user, index) => (
                       <tr key={index} className="text-[14px] text-gray-900 ">
-                        <td className="w-14 px-2 py-3 text-left">
+                        <td className="w-14 px-2 py-3 text-center">
                           <input
                             type="checkbox"
                             name="selectAll"

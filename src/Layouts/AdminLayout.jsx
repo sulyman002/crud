@@ -1,24 +1,42 @@
 import React from "react";
 import AdminTabs from "../components/AdminTabs";
 import MobileNav from "../components/MobileNav";
+import bellIcon from "../assets/bell.svg"
 
 import { Outlet } from "react-router-dom";
+import useAppContext from "../context/useAppContext";
 
 // import { useNavigate } from "react-router-dom";
 
 const AdminLayout = () => {
-  // const navigate = useNavigate();
+  const { adminTitle } = useAppContext();
   return (
     <div>
       {/* Admin sections */}
-      <div className="md:flex items-center ">
+      <div className="flex flex-col md:flex-row h-screen bg-gray-50 ">
         {/* Admin Tabs */}
         
         <AdminTabs />
         {/* Mobile nav */}
-        <MobileNav />
+       
+         <MobileNav />
+    
 
-        <div className="md:w-9/11 w-full  h-screen bg-[#F5F5F5]"><Outlet /></div>
+        
+         <div className="flex-1 flex flex-col overflow-hidden">
+          <div className="pt-[48px] hidden md:flex pb-[24px] px-[32px] items-center justify-between bg-white shadow-lg">
+              <h2 className="text-[24px] font-semibold font-600 text-gray-700">
+                {adminTitle}
+              </h2>
+              <div className="">
+               <img src={bellIcon} alt="" className="w-[24px] h-[24px]" />
+              </div>
+            </div>
+
+            <main className="flex-1 overflow-y-auto p-3"><Outlet /></main>
+         </div>
+
+        {/* <div className="w-full flex-1  h-screen bg-[#F5F5F5]"></div> */}
       </div>
       
     </div>

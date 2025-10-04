@@ -4,6 +4,7 @@ export const AppContext = createContext({});
 
 export const AppProvider = ({ children }) => {
   const [changeAdmin, setChangeAdmin] = useState("dashboard");
+    const [adminTitle, setAdminTitle] = useState("User Management");
   const [searchUser, setSearchUser] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
   const [rowsPerPage, setRowsPerPage] = useState(10);
@@ -42,7 +43,9 @@ export const AppProvider = ({ children }) => {
     formData,
     setFormData,
     error,
-    setError
+    setError,
+    adminTitle,
+    setAdminTitle
   };
 
   return <AppContext.Provider value={store}>{children}</AppContext.Provider>;

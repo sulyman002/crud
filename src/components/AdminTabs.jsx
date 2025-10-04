@@ -3,139 +3,101 @@ import React from "react";
 import useAppContext from "../context/useAppContext.js";
 import crudLogo from "../assets/crudLogo.png";
 import { useNavigate } from "react-router-dom";
+import dashboard from "../assets/dashboard.svg";
+import userManagement from "../assets/userManagement.svg";
+import survey from "../assets/survey.svg";
+import profileArrow from "../assets/profileArrow.svg"
 
 const AdminTabs = () => {
-  const { changeAdmin, setChangeAdmin } = useAppContext();
+  const { changeAdmin, setChangeAdmin, setAdminTitle } = useAppContext();
+  
   const navigate = useNavigate();
   return (
-    <div className="lg:w-4/11 xl:w-2/11 md:w-4/11 h-screen p-8 bg-[#373737] text-white hidden md:flex">
-      <div className="flex items-start flex-col justify-between w-full h-full">
-        <div className="flex items-start gap-8 flex-col w-full">
-          {/* site icon */}
-          <div onClick={() => navigate("/user-management")} className="">
-            <img src={crudLogo} alt="crudLogo" />
+    <aside className=" p-8 bg-[#373737] hidden md:flex flex-col w-75  text-white h-screen ">
+       {/* site icon */}
+      <div
+        onClick={() => navigate("/user-management")}
+        className="flex items-center justify-center"
+      >
+        <img src={crudLogo} alt="crudLogo" />
+      </div>
+
+     
+
+      {/* admin menu */}
+      <nav className="flex-1 px-2 space-y-6 mt-8">
+        <button
+          name="dashboard"
+          onClick={(event) => {
+            setChangeAdmin(event.target.name);
+            setAdminTitle("Dashboard")
+            console.log(event.target);
+            navigate("dashboard");
+          }}
+          className={`flex items-center gap-3 cursor-pointer justify-start pl-6 py-4 rounded-[8px]  text-[16px] w-full ${
+            changeAdmin === "dashboard"
+              ? "bg-[#1F66B7]  text-white "
+              : "text-[#F5EEF9] "
+          }`}
+        >
+          <img src={dashboard} alt="dashboard" className="h-[20px] w-[20px] " />
+          Dashboard
+        </button>
+        <button
+          name="allUsers"
+          onClick={(event) => {
+            setChangeAdmin(event.target.name);
+            setAdminTitle("User Management")
+            console.log(event.target);
+            navigate("/");
+          }}
+          className={`flex items-center gap-3 cursor-pointer justify-start pl-6 py-4 rounded-[8px]  text-[16px] w-full ${
+            changeAdmin === "allUsers"
+              ? "bg-[#1F66B7]  text-white "
+              : "text-[#F5EEF9] "
+          }`}
+        >
+          <img
+            src={userManagement}
+            alt="user management"
+            className="h-[20px] w-[20px] "
+          />
+          User Management
+        </button>
+        <button
+          name="create-trip"
+          onClick={(event) => {
+            setChangeAdmin(event.target.name);
+            setAdminTitle("Survey")
+            console.log(event.target);
+            navigate("survey");
+          }}
+          className={`flex items-center gap-3 cursor-pointer justify-start pl-6 py-4 rounded-[8px]  text-[16px] w-full ${
+            changeAdmin === "create-trip"
+              ? "bg-[#1F66B7]  text-white font-medium font-500"
+              : "text-[#F5EEF9] "
+          }`}
+        >
+          <img src={survey} alt="survey" className="h-[20px] w-[20px] " />
+          Survey
+        </button>
+      </nav>
+
+      <div className=" flex items-center gap-[10px] w-full justify-between">
+        <div className="flex items-center gap-4">
+          <div className="p-[10px] bg-[#FAF7FC] rounded-[4px] font-medium text-[#1F66B7] text-[16px] ">
+            S.B
           </div>
-          {/* admin menu */}
-          <div className="flex flex-col py-6 gap-[8px] w-full">
-            <button
-              name="dashboard"
-              onClick={(event) => {
-                setChangeAdmin(event.target.name);
-                console.log(event.target);
-                navigate("dashboard");
-              }}
-              className={`flex items-center gap-3 cursor-pointer justify-start pl-6 py-4 rounded-[8px]  text-[16px]  ${
-                changeAdmin === "dashboard"
-                  ? "bg-[#1F66B7]  text-white "
-                  : "text-[#F5EEF9] "
-              }`}
-            >
-              <svg
-                width="20px"
-                height="20px"
-                viewBox="0 0 18 17"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M7.9285 -0.00878906H1.14279C0.946359 -0.00878906 0.785645 0.151925 0.785645 0.348354V7.13407C0.785645 7.3305 0.946359 7.49121 1.14279 7.49121H7.9285C8.12493 7.49121 8.28565 7.3305 8.28565 7.13407V0.348354C8.28565 0.151925 8.12493 -0.00878906 7.9285 -0.00878906ZM6.76779 5.97335H2.3035V1.50907H6.76779V5.97335ZM16.8571 -0.00878906H10.0714C9.87493 -0.00878906 9.71422 0.151925 9.71422 0.348354V7.13407C9.71422 7.3305 9.87493 7.49121 10.0714 7.49121H16.8571C17.0535 7.49121 17.2142 7.3305 17.2142 7.13407V0.348354C17.2142 0.151925 17.0535 -0.00878906 16.8571 -0.00878906ZM15.6964 5.97335H11.2321V1.50907H15.6964V5.97335ZM7.9285 8.91978H1.14279C0.946359 8.91978 0.785645 9.0805 0.785645 9.27693V16.0626C0.785645 16.2591 0.946359 16.4198 1.14279 16.4198H7.9285C8.12493 16.4198 8.28565 16.2591 8.28565 16.0626V9.27693C8.28565 9.0805 8.12493 8.91978 7.9285 8.91978ZM6.76779 14.9019H2.3035V10.4376H6.76779V14.9019ZM16.8571 8.91978H10.0714C9.87493 8.91978 9.71422 9.0805 9.71422 9.27693V16.0626C9.71422 16.2591 9.87493 16.4198 10.0714 16.4198H16.8571C17.0535 16.4198 17.2142 16.2591 17.2142 16.0626V9.27693C17.2142 9.0805 17.0535 8.91978 16.8571 8.91978ZM15.6964 14.9019H11.2321V10.4376H15.6964V14.9019Z"
-                  fill="#F5EEF9"
-                />
-              </svg>
-              Dashboard
-            </button>
-            <button
-              name="allUsers"
-              onClick={(event) => {
-                setChangeAdmin(event.target.name);
-                console.log(event.target);
-                navigate("/");
-              }}
-              className={`flex items-center gap-3 cursor-pointer justify-start pl-6 py-4 rounded-[8px]  text-[16px]  ${
-                changeAdmin === "allUsers"
-                  ? "bg-[#1F66B7]  text-white "
-                  : "text-[#F5EEF9] "
-              }`}
-            >
-              <svg
-                width="16px"
-                height="18px"
-                viewBox="0 0 16 18"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M14.6668 16.7041V15.0374C14.6668 14.1534 14.3156 13.3055 13.6905 12.6804C13.0654 12.0553 12.2176 11.7041 11.3335 11.7041H4.66683C3.78277 11.7041 2.93493 12.0553 2.30981 12.6804C1.68469 13.3055 1.3335 14.1534 1.3335 15.0374V16.7041M11.3335 5.03743C11.3335 6.87838 9.84111 8.37077 8.00016 8.37077C6.15921 8.37077 4.66683 6.87838 4.66683 5.03743C4.66683 3.19649 6.15921 1.7041 8.00016 1.7041C9.84111 1.7041 11.3335 3.19649 11.3335 5.03743Z"
-                  stroke="white"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                />
-              </svg>
-              User Management
-            </button>
-            <button
-              name="create-trip"
-              onClick={(event) => {
-                setChangeAdmin(event.target.name);
-                console.log(event.target);
-                navigate("survey");
-              }}
-              className={`flex items-center gap-3 cursor-pointer justify-start pl-6 py-4 rounded-[8px]  text-[16px]  ${
-                changeAdmin === "create-trip"
-                  ? "bg-[#1F66B7]  text-white font-medium font-500"
-                  : "text-[#F5EEF9] "
-              }`}
-            >
-              <svg
-                width="16px"
-                height="19px"
-                viewBox="0 0 16 19"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M9.66683 0.871094H3.00016C2.55814 0.871094 2.13421 1.04669 1.82165 1.35925C1.50909 1.67181 1.3335 2.09573 1.3335 2.53776V15.8711C1.3335 16.3131 1.50909 16.737 1.82165 17.0496C2.13421 17.3622 2.55814 17.5378 3.00016 17.5378H13.0002C13.4422 17.5378 13.8661 17.3622 14.1787 17.0496C14.4912 16.737 14.6668 16.3131 14.6668 15.8711V5.87109M9.66683 0.871094L14.6668 5.87109M9.66683 0.871094V5.87109H14.6668M11.3335 10.0378H4.66683M11.3335 13.3711H4.66683M6.3335 6.70443H4.66683"
-                  stroke="white"
-                  stroke-width="1.5"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                />
-              </svg>
-              Survey
-            </button>
+          <div className="flex flex-col items-start gap-[4px] font-[Source Code Pro]">
+            <p className="text-[16px]   ">Admin</p>
+            <p className="">Sandra Bullocks</p>
           </div>
         </div>
-        <div className=" flex items-center gap-[10px] w-full justify-between  ">
-          <div className="flex items-center gap-4">
-            <div className="p-[10px] bg-[#FAF7FC] rounded-[4px] font-medium text-[#1F66B7] text-[16px] ">
-              S.B
-            </div>
-            <div className="flex flex-col items-start gap-[4px] font-[Source Code Pro]">
-              <p className="text-[16px]   ">Admin</p>
-              <p className="">Sandra Bullocks</p>
-            </div>
-          </div>
-          <div className="">
-            <svg
-              width="9"
-              height="15"
-              viewBox="0 0 9 15"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M1.5 13.2041L7.5 7.2041L1.5 1.2041"
-                stroke="#FAF7FC"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              />
-            </svg>
-          </div>
+        <div className="">
+          <img src={profileArrow} alt="profile arrow" />
         </div>
       </div>
-    </div>
+    </aside>
   );
 };
 
