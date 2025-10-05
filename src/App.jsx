@@ -4,6 +4,7 @@ import UserManagement from "./pages/UserManagement";
 import Dashboard from "./pages/Dashboard";
 import Survey from "./pages/Survey";
 import ProfileInfo from "./pages/ProfileInfo";
+import AdminLogin1 from "./AdminPages/AdminLogin1";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
           <Route path="survey" element={<Survey />} />
           <Route path="profile-info" element={<ProfileInfo />} />
         </Route>
+        <Route path="admin-1" element={<AdminLogin1 />} /> 
       </Routes>
     </>
   );

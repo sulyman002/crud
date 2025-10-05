@@ -1,5 +1,5 @@
 import React from "react";
-import AdminTabs from "../components/AdminTabs";
+import AdminSidebar from "../components/AdminSidebar";
 import MobileNav from "../components/MobileNav";
 import bellIcon from "../assets/bell.svg";
 
@@ -17,7 +17,7 @@ const AdminLayout = () => {
       <div className="flex flex-col md:flex-row h-screen bg-gray-50 ">
         {/* Admin Tabs */}
 
-        <AdminTabs />
+        <AdminSidebar />
         {/* Mobile nav */}
 
         <MobileNav />

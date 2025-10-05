@@ -4,11 +4,13 @@ import useAppContext from "../context/useAppContext.js";
 import crudLogo from "../assets/crudLogo.png";
 import { useNavigate } from "react-router-dom";
 import dashboard from "../assets/dashboard.svg";
-import userManagement from "../assets/userManagement.svg";
+// import userManagement from "../assets/userManagement.svg";
 import survey from "../assets/survey.svg";
 import profileArrow from "../assets/profileArrow.svg"
+import { UserPen } from "lucide-react";
 
-const AdminTabs = () => {
+
+const AdminSidebar = () => {
   const { changeAdmin, setChangeAdmin, setAdminTitle, displayLogo } = useAppContext();
   
   const navigate = useNavigate();
@@ -44,28 +46,29 @@ const AdminTabs = () => {
           Dashboard
         </button>
         <button
-          name="allUsers"
+          name="userManagement"
           onClick={(event) => {
             setChangeAdmin(event.target.name);
             setAdminTitle("User Management")
             console.log(event.target);
-            navigate("/");
+            // navigate("/");
           }}
           className={`flex items-center gap-3 cursor-pointer justify-start pl-6 py-4 rounded-[8px]  text-[16px] w-full ${
-            changeAdmin === "allUsers"
+            changeAdmin === "userManagement"
               ? "bg-[#1F66B7]  text-white "
               : "text-[#F5EEF9] "
           }`}
         >
-          <img
+          {/* <img
             src={userManagement}
             alt="user management"
             className="h-[20px] w-[20px] "
-          />
+          /> */}
+          <UserPen className="text-white size-7 " />
           User Management
         </button>
         <button
-          name="create-trip"
+          name="survey"
           onClick={(event) => {
             setChangeAdmin(event.target.name);
             setAdminTitle("Survey")
@@ -73,7 +76,7 @@ const AdminTabs = () => {
             navigate("survey");
           }}
           className={`flex items-center gap-3 cursor-pointer justify-start pl-6 py-4 rounded-[8px]  text-[16px] w-full ${
-            changeAdmin === "create-trip"
+            changeAdmin === "survey"
               ? "bg-[#1F66B7]  text-white font-medium font-500"
               : "text-[#F5EEF9] "
           }`}
@@ -101,4 +104,4 @@ const AdminTabs = () => {
   );
 };
 
-export default AdminTabs;
+export default AdminSidebar;

@@ -46,7 +46,7 @@ const UserManagement = () => {
   const client = useQueryClient();
 
   const mutation = useMutation({
-    queryFn: deleteUser,
+    queryFn: deleteUser, 
     onSuccess: () => {
       client.invalidateQueries(["users"]);
     },
@@ -200,7 +200,7 @@ const UserManagement = () => {
                   >
                     <img
                       src={filterIcon}
-                      alt=""
+                      alt="filter icon"
                       className="w-[24px] h-[24px] "
                     />
 
