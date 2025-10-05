@@ -3,6 +3,7 @@ import AdminLayout from "./Layouts/AdminLayout";
 import UserManagement from "./pages/UserManagement";
 import Dashboard from "./pages/Dashboard";
 import Survey from "./pages/Survey";
+import ProfileInfo from "./pages/ProfileInfo";
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
           <Route path="dashboard" element={<Dashboard />} />
           <Route index element={<UserManagement />} />
           <Route path="survey" element={<Survey />} />
+          <Route path="profile-info" element={<ProfileInfo />} />
         </Route>
       </Routes>
     </>

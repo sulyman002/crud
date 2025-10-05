@@ -24,6 +24,8 @@ const UserManagement = () => {
     editUser,
     setEditUser,
     setEditingRow,
+    checkboxChecked,
+    setCheckboxChecked,
   } = useAppContext();
   const [openFilter, setOpenFilter] = useState(false);
   const [newUser, setNewUser] = useState(false);
@@ -50,7 +52,13 @@ const UserManagement = () => {
     },
   });
 
-
+  const handleCheckboxChecked = (userId) => {
+    setCheckboxChecked((prev) => {
+      prev.includes(userId)
+        ? prev.filter((item) => item.id !== userId)
+        : [...prev, userId];
+    });
+  };
 
   if (isLoading) return <div>Loading...</div>;
   if (error) return <div>Error loading users</div>;
@@ -82,7 +90,6 @@ const UserManagement = () => {
       ) : (
         <div className="">
           <div className=" flex flex-col  bg-[#F0F7FF]">
-            
             {/* Manage User */}
             <div className="flex  pl-[34px] pr-[40px] py-[24px] flex-col gap-[24px]">
               {/* Manage User */}
@@ -180,7 +187,7 @@ const UserManagement = () => {
               <div className=" pt-[24px] ">
                 <div className="flex items-center gap-[17px]">
                   <input
-                    className="py-[12px] border border-gray-200 rounded-[8px] pl-[18px] pr-[72px] outline-none"
+                    className="py-[12px] border w-[266px]  border-gray-200 rounded-[8px] pl-[18px] pr-[72px] outline-none"
                     value={searchUser}
                     onChange={(e) => setSearchUser(e.target.value)}
                     type="text"
@@ -191,7 +198,11 @@ const UserManagement = () => {
                     onClick={handleOpenFilter}
                     className="relative flex items-center justify-center py-[12px] px-[12px] border border-gray-200 rounded-[8px] cursor-pointer "
                   >
-                    <img src={filterIcon} alt="" className="w-[24px] h-[24px] " />
+                    <img
+                      src={filterIcon}
+                      alt=""
+                      className="w-[24px] h-[24px] "
+                    />
 
                     {openFilter && (
                       <div
@@ -379,6 +390,8 @@ const UserManagement = () => {
                       <tr key={index} className="text-[14px] text-gray-900 ">
                         <td className="w-14 px-2 py-3 text-center">
                           <input
+                            checked={checkboxChecked.includes(user.id)}
+                            onChange={() => handleCheckboxChecked(user.id)}
                             type="checkbox"
                             name="selectAll"
                             id=""

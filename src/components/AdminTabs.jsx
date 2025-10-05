@@ -9,7 +9,7 @@ import survey from "../assets/survey.svg";
 import profileArrow from "../assets/profileArrow.svg"
 
 const AdminTabs = () => {
-  const { changeAdmin, setChangeAdmin, setAdminTitle } = useAppContext();
+  const { changeAdmin, setChangeAdmin, setAdminTitle, displayLogo } = useAppContext();
   
   const navigate = useNavigate();
   return (
@@ -19,7 +19,7 @@ const AdminTabs = () => {
         onClick={() => navigate("/user-management")}
         className="flex items-center justify-center"
       >
-        <img src={crudLogo} alt="crudLogo" />
+        <img src={displayLogo ||crudLogo} alt="crudLogo" />
       </div>
 
      

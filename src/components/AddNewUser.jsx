@@ -72,8 +72,6 @@ const AddNewUser = () => {
 
   return (
     <div className="fixed inset-0 w-full min-h-screen overflow-y-auto bg-[#575D7299] z-50">
-      <MobileNav />
-
       <div className="flex flex-col overflow-y-auto">
         <div className="px-8 flex md:hidden items-center gap-[2px] py-[14px] bg-[#FAF7FC] ">
           <p className="leading-[20px] text-[#89939E] ">User Management/</p>
