@@ -4,7 +4,7 @@ import useAppContext from "../context/useAppContext.js";
 import crudLogo from "../assets/crudLogo.png";
 import { useNavigate } from "react-router-dom";
 import dashboard from "../assets/dashboard.svg";
-// import userManagement from "../assets/userManagement.svg";
+import userManagement from "../assets/userManagement.svg";
 import survey from "../assets/survey.svg";
 import profileArrow from "../assets/profileArrow.svg"
 import { UserPen } from "lucide-react";
@@ -59,12 +59,12 @@ const AdminSidebar = () => {
               : "text-[#F5EEF9] "
           }`}
         >
-          {/* <img
+           <img
             src={userManagement}
             alt="user management"
             className="h-[20px] w-[20px] "
-          /> */}
-          <UserPen className="text-white size-7 " />
+          /> 
+          {/* <UserPen className="text-white size-7 " /> */}
           User Management
         </button>
         <button

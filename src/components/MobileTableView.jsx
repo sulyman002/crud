@@ -18,11 +18,10 @@ const MobileTableView = () => {
     setClickRow,
     editUser,
     setEditUser,
-    setEditingRow
-
+    setEditingRow,
   } = useAppContext();
 
-   const handleClickRow = () => {
+  const handleClickRow = () => {
     setClickRow(!clickRow);
   };
   return (
@@ -69,10 +68,15 @@ const MobileTableView = () => {
 
                   {/* edit and delete */}
                   <div className="flex items-center gap-[17px] text-[14px] underline cursor-pointer text-gray-600">
-                    <p onClick={() => {
-                       setEditUser(!editUser);
-                       setEditingRow(user)
-                    }} className="">Edit</p>
+                    <p
+                      onClick={() => {
+                        setEditUser(!editUser);
+                        setEditingRow(user);
+                      }}
+                      className=""
+                    >
+                      Edit
+                    </p>
                     <p className="">Delete</p>
                   </div>
                 </div>
@@ -203,7 +207,9 @@ const MobileTableView = () => {
           </div>
           <div
             onClick={() => {
-              setCurrentPage(Math.min(currentPage + 1, Math.ceil(data.length / rowsPerPage)));
+              setCurrentPage(
+                Math.min(currentPage + 1, Math.ceil(data.length / rowsPerPage))
+              );
             }}
             className=""
           >

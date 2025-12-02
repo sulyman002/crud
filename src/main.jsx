@@ -4,17 +4,15 @@ import "./index.css";
 import App from "./App.jsx";
 import { BrowserRouter } from "react-router-dom";
 import { AppProvider } from "./context/AppContext.jsx";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-
-const queryClient = new QueryClient();
+import TanstackProvider from "./providers/TanstackProvider.jsx";
 
 createRoot(document.getElementById("root")).render(
   <BrowserRouter>
     <StrictMode>
       <AppProvider>
-        <QueryClientProvider client={queryClient}>
+        <TanstackProvider>
           <App />
-        </QueryClientProvider>
+        </TanstackProvider>
       </AppProvider>
     </StrictMode>
     ,
