@@ -3,10 +3,10 @@ import backgroundImg from "../../assets/backgroundImg.png";
 import { Eye } from "lucide-react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
-import { createUserWithEmailAndPassword } from "firebase/auth";
-import { auth } from "../../firebase/firebase";
+import useAuthContext from "../../context/useAuthContext";
 
 const Login = () => {
+  const { signInLogic } = useAuthContext();
   const navigate = useNavigate();
   const {
     register,
@@ -15,15 +15,16 @@ const Login = () => {
   } = useForm();
 
   const onSubmit = async (data) => {
-
-    await createUserWithEmailAndPassword(auth, data?.email, data?.password)
-    console.log(data);
+    signInLogic({
+      email: data.email,
+      password: data.password,
+    });
   };
 
   return (
     <div
       style={{
-        backgroundImage: `url(${backgroundImg}), linear-gradient(to left, #326D2D, #1C421B)`,
+        backgroundImage: `url(${backgroundImg}), linear-gradient(to left, #f5f5f5, #c1abd6)`,
       }}
       className="h-screen w-full bg-contain bg-no-repeat flex justify-center"
     >
@@ -66,7 +67,7 @@ const Login = () => {
                 {...register("password", {
                   required: "Password is required. ",
                   minLength: {
-                    value: 8,
+                    value: 10,
                     message: "Password must be at least 8 characters. ",
                   },
                 })}

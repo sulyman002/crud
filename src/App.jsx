@@ -8,22 +8,49 @@ import { Toaster } from "sonner";
 import Login from "./pages/Auth/Login";
 import ForgetPassword from "./pages/Auth/ForgetPassword";
 import Register from "./pages/Auth/Register";
+import RouterTracker from "./components/RouterTracker";
+import PublicRoute from "./router/PublicRoute";
+import ProtectedRoute from "./router/ProtectedRoute";
 
 function App() {
   return (
     <>
       <Toaster />
+      <RouterTracker />
       <Routes>
+        <Route path="/" element={<Navigate to="/auth/login" replace />} />
         <Route path="auth">
           <Route index element={<Navigate to="login" replace />} />
-          <Route path="register" element={<Register />} />
-          <Route path="login" element={<Login />} />
+          <Route
+            path="login"
+            element={
+              <PublicRoute>
+                <Login />
+              </PublicRoute>
+            }
+          />
+          <Route
+            path="register"
+            element={
+              <PublicRoute>
+                <Register />
+              </PublicRoute>
+            }
+          />
           <Route path="forget-password" element={<ForgetPassword />} />
         </Route>
 
-        <Route path="/" element={<AdminLayout />}>
+        <Route
+          path="en"
+          element={
+            <ProtectedRoute>
+              <AdminLayout />
+            </ProtectedRoute>
+          }
+        >
+          <Route index element={<Navigate to="dashboard" replace />} />
           <Route path="dashboard" element={<Dashboard />} />
-          <Route index element={<UserManagement />} />
+          <Route path="user-management" element={<UserManagement />} />
           <Route path="survey" element={<Survey />} />
           <Route path="profile-info" element={<ProfileInfo />} />
         </Route>
