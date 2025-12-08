@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { AuthContext } from "../context/AuthContext";
-import { onAuthStateChanged, signInWithEmailAndPassword } from "firebase/auth";
+import { onAuthStateChanged, sendEmailVerification, signInWithEmailAndPassword } from "firebase/auth";
 import { auth, db } from "../firebase/firebase";
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { doc, setDoc } from "firebase/firestore";
@@ -36,6 +36,7 @@ export const AuthProvider = ({ children }) => {
         password
       );
       const user = userSignUpData.user;
+      await sendEmailVerification(user);
 
       await updateProfile(user, {
         displayName: firstName,

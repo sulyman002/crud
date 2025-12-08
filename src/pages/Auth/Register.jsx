@@ -10,7 +10,7 @@ import { useNavigate } from "react-router-dom";
 import CheckEmail from "../../components/CheckEmail";
 
 const Register = () => {
-  const [isSuccess, setIsSuccess] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(true);
   const { signUpLogic } = useAuthContext();
   const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
@@ -64,14 +64,14 @@ const Register = () => {
       style={{
         backgroundImage: `url(${backgroundImg}), linear-gradient(to left, #f5f5f5, #c1abd6)`,
       }}
-      className="h-screen w-full bg-contain bg-no-repeat flex items-center justify-center relative"
+      className="h-screen w-full bg-contain bg-no-repeat  relative"
     >
       <div className="flex flex-col gap-4">
         <div className="absolute top-10 right-20">change Lang</div>
-        {isSuccess === true ? (
+        {isSuccess ? (
           <CheckEmail />
         ) : (
-          <div className="flex items-center justify-center ">
+          <div className="flex items-center justify-center h-screen ">
             <div className="flex flex-col gap-3 mx-5">
               <div className="flex flex-col gap-3">
                 <div className="flex items-center justify-center">
