@@ -5,7 +5,9 @@ import Dashboard from "./pages/Dashboard";
 import Survey from "./pages/Survey";
 import ProfileInfo from "./pages/ProfileInfo";
 import { Toaster } from "sonner";
-import Login from "./pages/AdminPages/Login";
+import Login from "./pages/Auth/Login";
+import ForgetPassword from "./pages/Auth/ForgetPassword";
+import Register from "./pages/Auth/Register";
 
 function App() {
   return (
@@ -14,7 +16,9 @@ function App() {
       <Routes>
         <Route path="auth">
           <Route index element={<Navigate to="login" replace />} />
+          <Route path="register" element={<Register />} />
           <Route path="login" element={<Login />} />
+          <Route path="forget-password" element={<ForgetPassword />} />
         </Route>
 
         <Route path="/" element={<AdminLayout />}>
