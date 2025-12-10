@@ -1,0 +1,15 @@
+{
+  "firstName": "İsim",
+  "lastName": "Soyisim",
+  "emailAddress": "E-posta adresi",
+  "selectIndustry": "Sektör Seçin",
+  "selectCountry": "Ülke Seçin",
+  "password": "Şifre",
+  "signUp": "Kayıt Ol",
+  "login": "Giriş Yap",
+  "alreadyHaveAccount": "Zaten bir hesabınız var mı?",
+  "register": "Hesabınızı kaydedin",
+  "passwordRequirements": "Parola oluşturun (10+ karakter, harfler, sayılar ve özel karakter içermelidir).",
+  "passwordRule": "Şifre metin, sayı ve özel karakter içermelidir",
+  "enterDetails": "Lütfen bilgilerinizi girin."
+}

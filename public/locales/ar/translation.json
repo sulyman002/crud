@@ -1,0 +1,15 @@
+{
+  "firstName": "الاسم الأول",
+  "lastName": "اسم العائلة",
+  "emailAddress": "البريد الإلكتروني",
+  "selectIndustry": "اختر الصناعة",
+  "selectCountry": "اختر الدولة",
+  "password": "كلمة المرور",
+  "signUp": "اشتراك",
+  "login": "تسجيل الدخول",
+  "alreadyHaveAccount": "هل لديك حساب بالفعل؟",
+  "register": "سجّل حسابك",
+  "passwordRequirements": "أنشئ كلمة مرور (10+ أحرف، يجب أن تحتوي على حروف وأرقام وحرف خاص).",
+  "passwordRule": "A senha deve incluir texto, número e um caractere especial",
+  "enterDetails": "Por favor insira seus dados."
+}

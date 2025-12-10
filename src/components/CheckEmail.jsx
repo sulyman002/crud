@@ -1,10 +1,11 @@
-import { Mail } from "lucide-react";
+import { ArrowLeft, Mail } from "lucide-react";
 import React from "react";
 import useAuthContext from "../context/useAuthContext";
+import { useNavigate } from "react-router-dom";
 
 
 const CheckEmail = () => {
-
+  const navigate = useNavigate();
   const {user} = useAuthContext();
   console.log(user?.email);
   
@@ -15,7 +16,7 @@ const CheckEmail = () => {
           <img src="" alt="logoss" className="w-full h-full" />
         </div>
         <div className="h-20 w-20 rounded-full flex items-center justify-center border-5 border-blue-200 bg-blue-300/70">
-          <Mail size={24} className="text-blue-700" />
+          <Mail size={36} className="text-blue-700" />
         </div>
         <div className="flex flex-col gap-3">
           <h2 className="font-600 font-bold text-center text-1xl md:text-2xl">
@@ -24,6 +25,10 @@ const CheckEmail = () => {
           <p className="text-gray-600 text-base text-center">We sent a verification link to <br />
           {user?.email}
           </p>
+        </div>
+        <div onClick={() => navigate("/auth/login")} className="cursor-pointer text-gray-600 flex items-center gap-2">
+          <ArrowLeft />
+          <p className="">Back to Login Page</p>
         </div>
       </div>
     </div>

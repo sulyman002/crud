@@ -8,25 +8,27 @@ import { Controller, useForm } from "react-hook-form";
 import useAuthContext from "../../context/useAuthContext";
 import { useNavigate } from "react-router-dom";
 import CheckEmail from "../../components/CheckEmail";
+import { toast } from "sonner";
+import ChangeLang from "../../components/ChangeLang";
+import { useTranslation } from "react-i18next";
 
 const Register = () => {
-  const [isSuccess, setIsSuccess] = useState(true);
-  const { signUpLogic } = useAuthContext();
+  // States
   const [showPassword, setShowPassword] = useState(false);
+
+  // Fetch
+  const { signUpLogic } = useAuthContext();
   const navigate = useNavigate();
   const { data: flagsAndName } = useCountryFlagAndNames();
   const getHundred = flagsAndName?.slice(0, 100) ?? [];
-  // console.log(getHundred);
+  console.log(getHundred);
 
-  const toggleShowPassword = () => {
-    setShowPassword(!showPassword);
-  };
-
+  // RHF
   const {
     register,
     handleSubmit,
     control,
-    formState: { errors, isSubmitting },
+    formState: { errors, isSubmitting, isSubmitSuccessful },
   } = useForm({
     defaultValues: {
       firstName: "",
@@ -38,7 +40,14 @@ const Register = () => {
     },
   });
 
+  // Logic
+  const toggleShowPassword = () => {
+    setShowPassword(!showPassword);
+  };
+
   const onSubmit = async (data) => {
+    console.log("Submission Start");
+
     try {
       const user = await signUpLogic({
         firstName: data.firstName,
@@ -48,16 +57,22 @@ const Register = () => {
         industry: data.industries?.title,
         country: data.country?.name?.common,
       });
+      console.log("AFTER LOGIC", user);
 
-      console.log("SUBMIT CALLED:", data);
+      await new Promise((resolve) => setTimeout(resolve, 100));
+
       if (user) {
-        setIsSuccess(true);
-        navigate("/auth/login");
+        toast.success("sign up successfully");
       }
+
+      return true; // <-- THIS ensures RHF knows it's successful
     } catch (error) {
       console.error(error);
+      toast.error(error?.message);
     }
   };
+
+  const { t } = useTranslation();
 
   return (
     <div
@@ -67,11 +82,13 @@ const Register = () => {
       className="h-screen w-full bg-contain bg-no-repeat  relative"
     >
       <div className="flex flex-col gap-4">
-        <div className="absolute top-10 right-20">change Lang</div>
-        {isSuccess ? (
+        <div className="w-full flex justify-end pr-6 pt-6">
+          <ChangeLang />
+        </div>
+        {isSubmitSuccessful ? (
           <CheckEmail />
         ) : (
-          <div className="flex items-center justify-center h-screen ">
+          <div className="flex items-center justify-center  ">
             <div className="flex flex-col gap-3 mx-5">
               <div className="flex flex-col gap-3">
                 <div className="flex items-center justify-center">
@@ -79,10 +96,10 @@ const Register = () => {
                 </div>
                 <div className="flex flex-col items-center justify-center gap-1">
                   <h2 className="font-600 font-bold text-1xl md:text-2xl">
-                    Register your account
+                    {t("register")}
                   </h2>
                   <p className="text-gray-600 text-sm">
-                    Please enter your details.
+                    {t("enterDetails")}
                   </p>
                 </div>
               </div>
@@ -99,7 +116,7 @@ const Register = () => {
                         htmlFor="firstName"
                         className="text-gray-600 text-sm"
                       >
-                        First Name
+                        {t("firstName")}
                       </label>
                       <input
                         type="text"
@@ -123,7 +140,7 @@ const Register = () => {
                         htmlFor="lastName"
                         className="text-gray-600 text-sm"
                       >
-                        Last Name
+                        {t("lastName")}
                       </label>
                       <input
                         type="text"
@@ -147,7 +164,7 @@ const Register = () => {
                     htmlFor="emailAddress"
                     className="text-gray-600 text-sm"
                   >
-                    Email Address
+                    {t("emailAddress")}
                   </label>
                   <input
                     type="email"
@@ -180,7 +197,7 @@ const Register = () => {
                           <p className="flex flex-1 border-r border-gray-400 text-base text-gray-600">
                             {field.value
                               ? field.value.title
-                              : "Select Industry"}
+                              : `${t("selectIndustry")}`}
                           </p>
                           <div>
                             <Icons.ChevronDown
@@ -243,7 +260,7 @@ const Register = () => {
                           <p className="flex flex-1 border-r border-gray-400 text-base text-gray-600">
                             {field.value
                               ? field.value?.name?.common
-                              : "Select Country"}
+                              : `${t("selectCountry")}`}
                           </p>
                           <div>
                             <Icons.ChevronDown
@@ -295,10 +312,10 @@ const Register = () => {
                         value:
                           /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{10,}$/,
                         message:
-                          "Password must include text, number & special character",
+                          `${t("passwordRule")}`,
                       },
                     })}
-                    placeholder="Password"
+                    placeholder={t("password")}
                     className=" placeholder:text-gray-500 text-sm text-gray-600 outline-0 flex-1"
                   />
                   <div onClick={toggleShowPassword} className="">
@@ -332,13 +349,18 @@ const Register = () => {
                   </div>
                   <p className="text-sm text-gray-600">
                     {" "}
-                    Already have an account?{" "}
+                    {t("alreadyHaveAccount")} {" "}
                     <button
                       disabled={isSubmitting}
                       onClick={() => navigate("/auth/login")}
-                      className={`${isSubmitting ? "cursor-not-allowed text-gray-600" : "text-blue-500 cursor-pointer"}`}
+                      className={`${
+                        isSubmitting
+                          ? "cursor-not-allowed text-gray-600"
+                          : "text-blue-500 cursor-pointer"
+                      }`}
                     >
-                      Login
+                      {" "}
+                      {t("login")}
                     </button>
                   </p>
                 </div>
@@ -355,7 +377,7 @@ const Register = () => {
                   {isSubmitting ? (
                     <div className="h-6 w-6 border-4 border-t-transparent animate-spin border-white rounded-full"></div>
                   ) : (
-                    "Sign Up"
+                    `${t("signUp")}`
                   )}
                 </button>
               </form>

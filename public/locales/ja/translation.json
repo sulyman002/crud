@@ -1,0 +1,15 @@
+{
+  "firstName": "名",
+  "lastName": "姓",
+  "emailAddress": "メールアドレス",
+  "selectIndustry": "業界を選択",
+  "selectCountry": "国を選択",
+  "password": "パスワード",
+  "signUp": "サインアップ",
+  "login": "ログイン",
+  "alreadyHaveAccount": "すでにアカウントをお持ちですか？",
+  "register": "アカウントを登録する",
+  "passwordRequirements": "パスワードを作成してください（10文字以上、文字、数字、特殊文字を含める必要があります）。",
+  "passwordRule": "パスワードは文字、数字、特殊文字を含める必要があります",
+  "enterDetails": "詳細を入力してください。"
+}

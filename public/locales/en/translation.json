@@ -1,0 +1,15 @@
+{
+  "firstName": "First Name",
+  "lastName": "Last Name",
+  "emailAddress": "Email Address",
+  "selectIndustry": "Select Industry",
+  "selectCountry": "Select Country",
+  "password": "Password",
+  "signUp": "Sign Up",
+  "login": "Login",
+  "alreadyHaveAccount": "Already have an account?",
+  "register": "Register your account",
+  "passwordRequirements": "Create a password (10+ characters, must include letters, numbers, and a special character).",
+  "passwordRule": "Password must include text, number & special character",
+  "enterDetails": "Please enter your details."
+}
