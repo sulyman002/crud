@@ -15,7 +15,7 @@ const Login = () => {
   } = useForm();
 
   const onSubmit = async (data) => {
-    signInLogic({
+    await signInLogic({
       email: data.email,
       password: data.password,
     });
@@ -85,7 +85,11 @@ const Login = () => {
                   isSubmitting ? "cursor-not-allowed" : "cursor-pointer"
                 } bg-white px-7 py-3 rounded-r-[5px] text-[#226434] font-900 font-bold`}
               >
-                {isSubmitting ? "Logging In..." : "Log In"}
+                {isSubmitting ? (
+                  <div className="h-6 w-6 border-4 border-t-transparent animate-spin border-gray-900 rounded-full"></div>
+                ) : (
+                  "Log In"
+                )}
               </button>
             </div>
           </div>
@@ -96,6 +100,20 @@ const Login = () => {
           >
             <p className="font-400 text-white ">Forget Password? </p>
           </div>
+          <p className="text-sm text-gray-600">
+            Don't have an account? {" "}
+            <button
+              disabled={isSubmitting}
+              onClick={() => navigate("/auth/register")}
+              className={`${
+                isSubmitting
+                  ? "cursor-not-allowed text-gray-600"
+                  : "text-blue-500 cursor-pointer"
+              }`}
+            >
+              Sign Up
+            </button>
+          </p>
         </form>
       </div>
     </div>

@@ -1,9 +1,9 @@
-import { Navigate, useLocation } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 import useAuthContext from "../context/useAuthContext";
 
 const PublicRoute = ({ children }) => {
   const { user, loading } = useAuthContext();
-  const location = useLocation();
+  // const location = useLocation();
 
   if (loading)
     return (
@@ -12,9 +12,9 @@ const PublicRoute = ({ children }) => {
       </div>
     );
 
-  if (user && location.pathname === "/auth/login") {
-    return <Navigate to="/en/dashboard" replace />;
-  }
+ if (user && user.emailVerified) {
+  return <Navigate to="/en/dashboard" replace />;
+}
   return children;
 };
 

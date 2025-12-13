@@ -11,11 +11,12 @@ import Register from "./pages/Auth/Register";
 import RouterTracker from "./components/RouterTracker";
 import PublicRoute from "./router/PublicRoute";
 import ProtectedRoute from "./router/ProtectedRoute";
+import CheckEmail from "./components/CheckEmail";
 
 function App() {
   return (
     <>
-      <Toaster />
+      <Toaster position="top-right" />
       <RouterTracker />
       <Routes>
         <Route path="/" element={<Navigate to="/auth/login" replace />} />
@@ -37,6 +38,7 @@ function App() {
               </PublicRoute>
             }
           />
+          <Route path="check-email" element={<CheckEmail />} />
           <Route path="forget-password" element={<ForgetPassword />} />
         </Route>
 

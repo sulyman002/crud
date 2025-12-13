@@ -10,9 +10,7 @@ const ChangeLang = () => {
   const savedLang =
     languages.find((lang) => lang.code === savedLangCode) || languages[0];
   const [currentLang, setCurrentLang] = useState(savedLang);
-  const { t, i18n } = useTranslation();
-  console.log("Current language:", i18n.language);
-  console.log("t('welcome'):", t("welcome"));
+  const { i18n } = useTranslation();
 
   useEffect(() => {
     i18n.changeLanguage(savedLang.code);
@@ -20,7 +18,6 @@ const ChangeLang = () => {
 
   return (
     <div className="relative w-60">
-      <p className="">{t("welcome")} </p>
       <Listbox
         value={currentLang}
         onChange={(lang) => {
